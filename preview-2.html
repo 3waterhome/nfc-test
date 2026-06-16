@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>寶寶寫真紀念相簿</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:"Microsoft JhengHei", sans-serif;
+  background:linear-gradient(180deg,#fff7f2,#ffe3d8);
+  color:#5a3b32;
+  text-align:center;
+}
+
+.container{
+  max-width:480px;
+  margin:auto;
+  padding:24px 18px 50px;
+}
+
+.logo{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:12px;
+}
+
+.cover,.section{
+  background:#fff;
+  border-radius:26px;
+  padding:22px 18px;
+  margin-bottom:20px;
+  box-shadow:0 8px 22px rgba(120,70,50,.15);
+}
+
+h1{
+  color:#c87568;
+  font-size:26px;
+  margin:8px 0;
+}
+
+h2{
+  color:#c87568;
+  font-size:21px;
+}
+
+p{
+  line-height:1.8;
+  font-size:15px;
+}
+
+.slider{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  border-radius:20px;
+}
+
+.slide{
+  display:none;
+  width:100%;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+.slide.active{
+  display:block;
+}
+
+.dots{
+  margin-top:10px;
+}
+
+.dot{
+  display:inline-block;
+  width:9px;
+  height:9px;
+  background:#e6b1a8;
+  border-radius:50%;
+  margin:0 4px;
+}
+
+.dot.active{
+  background:#c87568;
+}
+
+video{
+  width:100%;
+  border-radius:18px;
+  margin-top:10px;
+}
+
+.letter{
+  background:#fff7f2;
+  text-align:left;
+  padding:18px;
+  border-radius:18px;
+  line-height:1.9;
+  font-size:15px;
+}
+
+.btn{
+  display:block;
+  margin:14px auto 0;
+  padding:13px 20px;
+  background:#d98678;
+  color:white;
+  text-decoration:none;
+  border-radius:999px;
+  font-size:15px;
+  max-width:260px;
+}
+
+.btn.secondary{
+  background:#b96b5b;
+}
+
+.lightbox{
+  display:none;
+  position:fixed;
+  z-index:999;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.9);
+  justify-content:center;
+  align-items:center;
+}
+
+.lightbox img{
+  max-width:92%;
+  max-height:92%;
+  border-radius:12px;
+}
+
+.close{
+  position:absolute;
+  top:20px;
+  right:28px;
+  color:white;
+  font-size:36px;
+  cursor:pointer;
+}
+
+footer{
+  font-size:13px;
+  color:#9a746a;
+  line-height:1.8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="cover">
+    <!-- 換成寫真館 Logo -->
+    <img src="images/logo.jpg" class="logo" alt="寫真館 Logo">
+
+    <h1>寶寶寫真紀念相簿</h1>
+    <p>
+      收藏寶寶最可愛的瞬間<br>
+      一份送給爸爸媽媽的珍貴回憶
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>📸 精選寫真照片</h2>
+    <p>點擊照片可以放大全螢幕觀看</p>
+
+    <div class="slider">
+      <img src="images/photo1.jpg" class="slide active" onclick="openLightbox(this.src)">
+      <img src="images/photo2.jpg" class="slide" onclick="openLightbox(this.src)">
+    </div>
+
+    <div class="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🎥 拍攝花絮影片</h2>
+    <p>記錄拍攝當天的可愛互動與溫馨時刻。</p>
+
+    <video controls>
+      <source src="video/making.mp4" type="video/mp4">
+      您的裝置不支援影片播放
+    </video>
+  </div>
+
+  <div class="section">
+    <h2>💌 爸媽給寶寶的話</h2>
+
+    <div class="letter">
+      親愛的寶貝：<br><br>
+      謝謝你來到我們的生命裡。<br>
+      從看見你的第一眼開始，爸爸媽媽的世界變得更加溫柔。<br><br>
+      希望你健康、平安、快樂地長大。<br>
+      未來無論你走到哪裡，<br>
+      都要記得，我們永遠愛你。<br><br>
+      愛你的爸爸媽媽
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>⭐ 完整雲端相簿</h2>
+    <p>觀看更多寶寶寫真照片。</p>
+
+    <a class="btn" href="https://photos.app.goo.gl/請換成你的相簿網址" target="_blank">
+      開啟 Google 相簿
+    </a>
+  </div>
+
+  <div class="section">
+    <h2>📅 預約下一次拍攝</h2>
+    <p>滿月、百日、周歲，每個成長階段都值得收藏。</p>
+
+    <a class="btn secondary" href="https://你的預約網址.com" target="_blank">
+      預約下一次拍攝
+    </a>
+  </div>
+
+  <footer>
+    Baby Memory NFC<br>
+    專屬於寶寶與家人的寫真紀念
+  </footer>
+
+</div>
+
+<div class="lightbox" id="lightbox">
+  <span class="close" onclick="closeLightbox()">×</span>
+  <img id="lightboxImg">
+</div>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+
+function showSlide(index){
+  slides.forEach(slide => slide.classList.remove("active"));
+  dots.forEach(dot => dot.classList.remove("active"));
+
+  slides[index].classList.add("active");
+  dots[index].classList.add("active");
+}
+
+setInterval(() => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}, 3000);
+
+function openLightbox(src){
+  document.getElementById("lightbox").style.display = "flex";
+  document.getElementById("lightboxImg").src = src;
+}
+
+function closeLightbox(){
+  document.getElementById("lightbox").style.display = "none";
+}
+</script>
+
+</body>
+</html>
