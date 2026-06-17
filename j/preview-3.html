@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>寶寶寫真紀念相簿</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Microsoft JhengHei",sans-serif;
+    background:linear-gradient(180deg,#fff7f4,#ffe9df);
+    color:#5f4a42;
+}
+
+.container{
+    max-width:500px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    border-radius:24px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.logo{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    object-fit:cover;
+    margin:auto;
+    display:block;
+}
+
+h1{
+    text-align:center;
+    color:#d67b6f;
+    margin-top:15px;
+    margin-bottom:10px;
+}
+
+h2{
+    color:#d67b6f;
+    margin-bottom:10px;
+}
+
+.desc{
+    text-align:center;
+    line-height:1.8;
+}
+
+.slider{
+    position:relative;
+}
+
+.slide{
+    display:none;
+    width:100%;
+    border-radius:18px;
+    cursor:pointer;
+}
+
+.active{
+    display:block;
+}
+
+.dots{
+    text-align:center;
+    margin-top:10px;
+}
+
+.dot{
+    width:10px;
+    height:10px;
+    background:#ccc;
+    border-radius:50%;
+    display:inline-block;
+    margin:0 5px;
+}
+
+.dot.active-dot{
+    background:#d67b6f;
+}
+
+iframe{
+    width:100%;
+    height:250px;
+    border:none;
+    border-radius:18px;
+}
+
+.letter{
+    background:#fff7f2;
+    padding:18px;
+    border-radius:18px;
+    line-height:2;
+}
+
+.btn{
+    display:block;
+    text-align:center;
+    background:#d67b6f;
+    color:white;
+    text-decoration:none;
+    padding:14px;
+    border-radius:50px;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.btn:hover{
+    opacity:.9;
+}
+
+.footer{
+    text-align:center;
+    color:#888;
+    font-size:13px;
+    padding:20px;
+}
+
+.lightbox{
+    display:none;
+    position:fixed;
+    z-index:999;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.9);
+    justify-content:center;
+    align-items:center;
+}
+
+.lightbox img{
+    max-width:95%;
+    max-height:95%;
+}
+
+.close{
+    position:absolute;
+    top:20px;
+    right:30px;
+    color:white;
+    font-size:40px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LOGO -->
+    <div class="card">
+
+        <!-- 換成你的Logo -->
+        <img src="images/logo.jpg" class="logo">
+
+        <h1>寶寶寫真紀念相簿</h1>
+
+        <p class="desc">
+            收藏寶寶最珍貴的瞬間<br>
+            留住幸福的每一刻 ❤️
+        </p>
+
+    </div>
+
+    <!-- 照片輪播 -->
+    <div class="card">
+
+        <h2>📸 精選寫真照片</h2>
+
+        <div class="slider">
+
+            <img src="images/photo1.jpg"
+                 class="slide active"
+                 onclick="openLightbox(this.src)">
+
+            <img src="images/photo2.jpg"
+                 class="slide"
+                 onclick="openLightbox(this.src)">
+
+        </div>
+
+        <div class="dots">
+            <span class="dot active-dot"></span>
+            <span class="dot"></span>
+        </div>
+
+    </div>
+
+    <!-- Youtube影片 -->
+    <div class="card">
+
+        <h2>🎥 拍攝花絮影片</h2>
+
+        <!-- 換成你的Youtube影片ID -->
+        <iframe
+            src="https://www.youtube.com/embed/YOUTUBE_ID"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+    <!-- 爸媽的話 -->
+    <div class="card">
+
+        <h2>💌 爸媽給寶寶的話</h2>
+
+        <div class="letter">
+
+            親愛的寶貝：<br><br>
+
+            謝謝你來到我們的生命裡。<br>
+
+            從第一次見到你的那一刻起，<br>
+            我們的世界變得更加完整。<br><br>
+
+            希望你健康快樂地長大，<br>
+            勇敢探索這個世界。<br><br>
+
+            無論未來遇到什麼事情，<br>
+            都請記得爸爸媽媽永遠愛你。 ❤️<br><br>
+
+            —— 愛你的爸爸媽媽
+
+        </div>
+
+    </div>
+
+    <!-- Google相簿 -->
+    <div class="card">
+
+        <h2>⭐ 完整雲端相簿</h2>
+
+        <a class="btn"
+           href="https://photos.app.goo.gl/你的Google相簿"
+           target="_blank">
+
+           📸 開啟完整相簿
+
+        </a>
+
+    </div>
+
+    <!-- 預約按鈕 -->
+    <div class="card">
+
+        <h2>📅 預約下一次拍攝</h2>
+
+        <p>
+            滿月｜百日｜抓周｜周歲
+        </p>
+
+        <a class="btn"
+           href="https://你的預約網址"
+           target="_blank">
+
+           我要預約
+
+        </a>
+
+    </div>
+
+    <div class="footer">
+        Baby Memory NFC ©
+    </div>
+
+</div>
+
+<!-- 全螢幕看圖 -->
+<div class="lightbox" id="lightbox">
+
+    <span class="close" onclick="closeLightbox()">
+        ×
+    </span>
+
+    <img id="lightboxImg">
+
+</div>
+
+<script>
+
+let slideIndex = 0;
+
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+
+function showSlides(){
+
+    slides.forEach(slide=>{
+        slide.classList.remove("active");
+    });
+
+    dots.forEach(dot=>{
+        dot.classList.remove("active-dot");
+    });
+
+    slideIndex++;
+
+    if(slideIndex > slides.length){
+        slideIndex = 1;
+    }
+
+    slides[slideIndex-1].classList.add("active");
+    dots[slideIndex-1].classList.add("active-dot");
+
+}
+
+showSlides();
+
+setInterval(showSlides,3000);
+
+function openLightbox(src){
+
+    document.getElementById("lightbox").style.display="flex";
+
+    document.getElementById("lightboxImg").src=src;
+
+}
+
+function closeLightbox(){
+
+    document.getElementById("lightbox").style.display="none";
+
+}
+</script>
+
+</body>
+</html>
